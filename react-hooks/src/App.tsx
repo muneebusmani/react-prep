@@ -2,15 +2,16 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import "./App.css";
 
 function App() {
-  const [name, addName] = useState("");
-  const [age, addAge] = useState("");
+  const [name, addName] = useState<string>("");
+  const [age, addAge] = useState<number>(0);
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
   };
   const handleInput =
-    (setter: React.Dispatch<React.SetStateAction<string>>) =>
+    <T,>(setter: React.Dispatch<React.SetStateAction<T>>) =>
     (event: ChangeEvent<HTMLInputElement>) => {
-      setter(event.target.value);
+      const value = event.target.value;
+      setter(value as T);
     };
   return (
     <>
