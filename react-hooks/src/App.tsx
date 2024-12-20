@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
 import "./App.css";
 
-function App() {
+const App: React.FC = () => {
   const [name, addName] = useState<string>("");
   const [age, addAge] = useState<number>(0);
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
@@ -9,7 +9,7 @@ function App() {
   };
   const handleInput =
     <T,>(setter: React.Dispatch<React.SetStateAction<T>>) =>
-    (event: ChangeEvent<HTMLInputElement>) => {
+    (event: ChangeEvent<HTMLInputElement>): void => {
       const value = event.target.value;
       setter(value as T);
     };
@@ -44,5 +44,5 @@ function App() {
       </form>
     </>
   );
-}
+};
 export default App;
